@@ -6,11 +6,9 @@ import { ComponentAComponent } from '../component-a/component-a.component';
   templateUrl: './component-b.component.html',
   styleUrls: ['./component-b.component.css']
 })
-export class ComponentBComponent extends ComponentAComponent implements OnInit {
+export class ComponentBComponent implements OnInit {
 
-  constructor() { 
-    super()
-  }
+  constructor() { }
 
   ngOnInit() {
   }
