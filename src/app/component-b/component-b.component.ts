@@ -11,18 +11,15 @@ import { PostService } from '../post.service';
 })
 export class ComponentBComponent implements OnInit {
 
-  posts$
+  posts$: Observable<Post[]>;
 
   constructor(private postService: PostService) { }
 
   ngOnInit() {
-    this.postService.posts$.subscribe(response => {
-      this.posts$ = response;
-    })
+    this.posts$ = this.postService.postFectcher()
   }
 
-  findPost(id) {
-   return this.posts$.find(post => post.id == id);
+  replace() {
+    this.postService.replace()
   }
-
 }

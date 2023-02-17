@@ -1,7 +1,7 @@
 
-Hello
+<button class="btn btn-warning" (click)="replace()">Replace</button>
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let post of posts$" routerLink="/posts/{{post.id}}">
+  <li class="list-group-item" *ngFor="let post of posts$ | async" routerLink="/posts/{{post.id}}">
       {{ post.title}}
   </li>
 </ul>

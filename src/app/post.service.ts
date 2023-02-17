@@ -6,8 +6,8 @@ import { Post } from './post';
 @Injectable()
 export class PostService {
 
-  posts$ = new BehaviorSubject<Post[]>([]);
-
+ private posts$ = new BehaviorSubject<Post[]>([]);
+  
   constructor(private http: HttpClient) {
     this.fetchPosts();
    }
@@ -20,18 +20,14 @@ export class PostService {
   }
 
   postFectcher() {
-    return this.posts$.asObservable;
+    return this.posts$.asObservable();
   }
 
-
-  // findPost(id) {
-  //   let post = this.posts$.find(post => post.id == id);
-  //   post ? post : this.http.get('https://jsonplaceholder.typicode.com/posts/' + id)
-  //   .subscribe(response => {
-  //     return response;
-  //   })
-
-  //   return post;
-  // }
+  replace() {
+    this.posts$.next([
+      {id: 3, userId: 4, title: 'Afolabi', body: 'Opakunle the dev'},
+      {id: 6, userId: 4, title: 'Ezra', body: 'Obiwale the dev'},
+    ])
+  }
 
 }

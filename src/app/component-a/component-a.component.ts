@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Post } from '../post';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-component-a',
@@ -7,13 +10,21 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ComponentAComponent implements OnInit {
 
-  baseName = 'Afolabi Opakunle'
+ post: Post;
 
   @Input() inputName:string;
   
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+    private postService: PostService) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      console.log(params.id);
+      this.postService.postFectcher().subscribe(posts => {
+       this.post = posts.find(post => post.id === parseInt(params.id));
+       console.log(this.post)
+      })
+    })
   }
 
   spreader() {

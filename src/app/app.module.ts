@@ -11,7 +11,7 @@ import { PostService } from './post.service';
 
 const routes: Routes = [
   { path: '', component: ComponentBComponent },
-  { path: 'post/:id', component: ComponentAComponent },
+  { path: 'posts/:id', component: ComponentAComponent },
 ]
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes) ],
